@@ -1,0 +1,86 @@
+{% extends "base.html" %}Shahzore-Home{% block title %} {% endblock title %} {% block content %}
+<div class="container-fluid mt-2">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://source.unsplash.com/1600x700/?technology" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+
+                    <p style='color:red;font-weight: bold;font-size: 50px;'><em>INNOVATIONS ARE NOT ALWAYS LIKED</em> </p>
+                </div>
+            </div>
+
+
+
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1600x700/?Drones,missiles" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p style='color:red;font-weight: bold;font-size: 50px;'> <em>INNOVATIONS ARE NOT ALWAYS LIKED</em></p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1600x700/?stars,planets" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p style='color:red;font-weight: bold;font-size: 50px;'><em>INNOVATIONS ARE NOT ALWAYS LIKED</em></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container">
+        <main>
+
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {% for post in allposts|slice:":9" reversed %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img style="height: 300px;width: 100%;" src="{{post.main_image.url}}" alt="">
+
+                                <div class="card-body">
+                                    <h4>{{post.title}}</h4>
+                                    <h6 class="text-danger">| A blog by {{post.author}}</h6>
+                                    <p class="text-primary">| About {{post.time_to_read}} min to read</p>
+
+                                    <p class="card-text">{{post.paragraph_1|slice:":250"}}...</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <form action="/{{post.pk}}"><button type="submit" class="btn btn-outline-warning">► Read More</button></form>
+                                        </div>
+                                        <small class="text-warning">{{post.date}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <form class="mb-5" action="/all/"><button style='width:100%' type="submit" class="btn btn-outline-primary">See All posts</button></form>
+            </div>
+        </main>
+
+
+
+
+    </div>{% endblock content %}

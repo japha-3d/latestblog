@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %} Search Results {% endblock title %} {% block content %}
+<main>
+    <h1 class="text-center mt-5 mb-3"> <u "> Search Results</u></h1>
+{% if allposts|length < 1 %}
+ <h4 class="text-center text-danger ">Oops no post is present on your search results.Try some other Keywords.</h4>
+{% endif %}
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for post in allposts %}
+
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img style="height: 300px;width: 100%;" src="{{post.main_image.url}}" alt="">
+
+                        <div class="card-body">
+                            <h4>{{post.title}}</h4>
+                            <h6 class="text-danger">| A blog by {{post.author}}</h6>
+                            <p class="text-primary">| About {{post.time_to_read}} min to read</p>
+
+                            <p class="card-text">{{post.paragraph_1|slice:":250"}}...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/{{post.pk}}"><button type="submit" class="btn btn-outline-warning">► Read More</button></form>
+                                </div>
+                                <small class="text-warning">{{post.date}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock content %}
