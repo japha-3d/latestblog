@@ -10,6 +10,8 @@ urlpatterns = [
     path('all/',views.PostAll,name='all',),
     path('trending/',views.Trending,name='trending',),
     path('search/',views.Search,name='search',),
+    path('contact/',views.Meet,name='contact',),
+    path('policy/',views.policy,name='policy',),
     path('<int:pk>',Detail.as_view(),name='home',),
 ]
 if settings.DEBUG:

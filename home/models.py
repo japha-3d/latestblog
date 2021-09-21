@@ -37,3 +37,11 @@ class Post(models.Model):
     link_2=models.CharField(max_length=200,null=True,blank=True)
     link_2_url=models.CharField(max_length=200,null=True,blank=True)
     trending=models.BooleanField(default=False)
+    def __str__(self):
+        return self.title
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    message = models.TextField()
+    def __str__(self):
+        return self.name
